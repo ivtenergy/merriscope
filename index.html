@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Basic Permutation</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		body{
+			margin: 0;
+			font-family: 'Varela Round', sans-serif;
+			background-color: cornflowerblue;
+			display: flex;
+			justify-content: center;
+			align-items: center;		
+		}		
+		form{
+			margin-top: 50px; 
+		}
+		h1{
+			margin-bottom: 50px;
+		}
+		
+		.form-input{
+			padding: 10px;
+			margin-bottom: 20px;
+			font-size: 30px;
+		}
+		.label{
+			font-weight: bold;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		var getUrlParameter = function getUrlParameter(sParam) {
+			var sPageURL = window.location.search.substring(1),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+
+			for (i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+
+				if (sParameterName[0] === sParam) {
+					return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+				}
+			}
+		};
+
+		$(document).ready(function(){			
+		  $('.form-input').on('input', function() {
+			  	var salary = $("#salary").val();
+				var salary_6 = salary * 6;
+			  	var sal3 = salary/3;
+			  	var opening = +salary + +sal3;
+			  	var monthly_spending_6 = $("#monthly-spending").val() * 6;
+			  		
+			  	$("#opening").val(opening);
+			  	$("#savings").val(salary_6 - monthly_spending_6);
+			  
+		  });
+			
+			var page_seg = getUrlParameter('w');
+
+			if(page_seg === 'jsloigsjkhyiuonsdhjgsdfkkgsdkuhdukihfdj'){
+				$("#form").show();
+			}		
+			else{
+				$("#form").hide();
+			}
+			
+			
+		});	
+	</script>
+	
+</head>
+
+<body>
+	<form action="#" id="form" style="display: none">
+		<h1>SPECIAL CALCULATOR</h1>
+		<div class="label">How much do you earn each month - after tax?</div>
+		<input type="number" class="form-input" id="salary" value="0" autocomplete="off">
+
+		<div class="label">What is the total amount of money you spend each month?</div>
+		<input type="number" class="form-input" id="monthly-spending" value="0" autocomplete="off">
+		
+		<div class="label">How much money do you have in savings (IN NAIRA)?</div>
+		<input type="number" class="form-input" id="savings" disabled value="0">
+		
+		<div class="label">OPENING</div>
+		<input type="number" class="form-input" id="opening" disabled value="0">
+		
+	</form>
+</body>
+</html>
